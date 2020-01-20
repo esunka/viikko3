@@ -3,7 +3,10 @@ package ohtu;
 import com.google.gson.Gson;
 import java.io.IOException;
 import org.apache.http.client.fluent.Request;
-
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws IOException {
         String url = "https://nhlstatisticsforohtu.herokuapp.com/players";
@@ -17,12 +20,20 @@ public class Main {
         Player[] players = mapper.fromJson(bodyText, Player[].class);
         
         System.out.println("Oliot:");
-        for (Player player : players) {
+
+
+        List<Player> unsorted = new ArrayList<>();
+
+        for( Player player: players) {
+            unsorted.add(player);
+        }
+        unsorted.sort((Player p1, Player p2)->p2.total().compareTo(p1.total()));
+
+        for(Player player:unsorted) {
             if(player.nationality().equals("FIN")){
                 System.out.println(player);
             }
-
-        }   
+        } 
     }
   
 }

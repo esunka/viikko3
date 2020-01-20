@@ -3,10 +3,10 @@ package ohtu;
 
 public class Player {
     private String name;
-    private String goals;
+    private Integer goals;
     private String nationality;
-    private String assists;
-
+    private Integer assists;
+    private Integer total;
     public void setName(String name) {
         this.name = name;
     }
@@ -17,17 +17,21 @@ public class Player {
 
     @Override
     public String toString() {
-        return name + " goals " + goals + " assists " + assists;
-    }
-    public String goals() {
-        return goals;
+        return name + " goals " + goals + " assists " + assists + " total " + total;
     }
 
+    public Integer goals() {
+        return goals;
+    }
+    public Integer total() {
+        total = goals+assists;
+        return total;
+    }
     public String nationality() {
         return nationality;
     }
     
-    public String assists() {
+    public Integer assists() {
         return assists;
     }
 
