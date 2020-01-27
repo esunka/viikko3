@@ -9,6 +9,12 @@ Feature: A new user account can be created if a proper unused username and passw
         When  username "pekka" and password "password123" are entered
         Then  system will respond with "new user not registered"
 
+    Scenario: creation fails with invalid username and valid password
+        Given command new is selected
+        When  username "jaja" and password "password123" are entered
+        Then  system will respond with "new user not registered"
+
+
 	Scenario: creation fails with too short username and valid password
         Given command new is selected
         When  username "fo" and password "password123" are entered
