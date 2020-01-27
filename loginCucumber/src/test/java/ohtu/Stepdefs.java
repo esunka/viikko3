@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import static org.junit.Assert.*;
 import ohtu.io.*;
@@ -30,6 +31,18 @@ public class Stepdefs {
         inputLines.add("login");
     }
 
+    @Given("^command new is selected$")
+    public void commandNewSelected() throws Throwable {
+        inputLines.add("new");
+    }
+
+    @Given("user {string} with password {string} is created")
+    public void userWithPasswordIsCreated(String username, String password) {
+        io = new StubIO(Arrays.asList("new", username, password));   
+        app = new App(io, auth);
+        app.run();
+    }
+    
     @When("username {string} and password {string} are entered")
     public void usernameAndPasswordAreEntered(String username, String password) {
        inputLines.add(username);
