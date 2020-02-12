@@ -64,9 +64,9 @@ public class Tester {
         element = driver.findElement(By.name("username"));
         element.sendKeys("arto"+r.nextInt(100000));
         element = driver.findElement(By.name("password"));
-        element.sendKeys("foobar");
+        element.sendKeys("foobarbar1");
         element = driver.findElement(By.name("passwordConfirmation"));
-        element.sendKeys("foobar");
+        element.sendKeys("foobarbar1");
         sleep(2);
         element.submit();
         sleep(1);
